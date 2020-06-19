@@ -15,14 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static TextView tvMainHighLoadTaskResult;
     private static Button btnMainPerformHighLoadTask;
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            //based on high load task result
-            tvMainHighLoadTaskResult.setText("Task is complete.");
-        }
-    };
+    private static Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +25,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvMainHighLoadTaskResult = findViewById(R.id.tvMainHighLoadTaskResult);
         btnMainPerformHighLoadTask = findViewById(R.id.btnMainPerformHighLoadTask);
         btnMainPerformHighLoadTask.setOnClickListener(this);
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                //based on high load task result
+                tvMainHighLoadTaskResult.setText("Task is complete.");
+            }
+        };
     }
 
     @Override
